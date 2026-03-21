@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de saisie avec Stockage</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .form-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #dataDisplay {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: white;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Formulaire de saisie</h2>
+      <form id="dataForm">
+        <div class="form-group">
+          <label for="nom">Nom :</label>
+          <input type="text" id="nom" name="nom" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="age">Âge :</label>
+          <input type="number" id="age" name="age" min="0" max="120" />
+        </div>
+
+        <div class="form-group">
+          <label for="abonnement">Date d'abonnement :</label>
+          <input type="date" id="abonnement" name="abonnement" required />
+        </div>
+
+        <div class="form-group">
+          <label for="statut">Statut :</label>
+          <select id="statut" name="statut">
+            <option value="actif">Actif</option>
+            <option value="inactif">Inactif</option>
+            <option value="en_attente">En attente</option>
+          </select>
+        </div>
+
+        <button type="submit">Enregistrer</button>
+        <button type="button" onclick="afficherDonnees()">
+          Afficher les données
+        </button>
+        <button type="button" onclick="effacerLocalStorage()">
+          Effacer toutes les données
+        </button>
+      </form>
+
+      <div id="dataDisplay"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("dataForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = {
+            id: Date.now(),
+            nom: document.getElementById("nom").value,
+            email: document.getElementById("email").value,
+            age: document.getElementById("age").value,
+            abonnement: document.getElementById("abonnement").value,
+            statut: document.getElementById("statut").value,
+            dateEnregistrement: new Date().toLocaleString(),
+          };
+
+          // Récupération des données existantes ou création d'un nouveau tableau
+          let storedData = JSON.parse(localStorage.getItem("formData")) || [];
+          storedData.push(formData);
+
+          // Sauvegarde dans le localStorage
+          localStorage.setItem("formData", JSON.stringify(storedData));
+
+          alert("Données enregistrées avec succès !");
+          this.reset();
+        });
+
+      function afficherDonnees() {
+        const dataDisplay = document.getElementById("dataDisplay");
+        const storedData = JSON.parse(localStorage.getItem("formData")) || [];
+
+        if (storedData.length === 0) {
+          dataDisplay.innerHTML = "<p>Aucune donnée enregistrée</p>";
+          return;
+        }
+
+        let html = "<h3>Données stockées :</h3>";
+        storedData.forEach((data, index) => {
+          html += `
+                    <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding: 10px;">
+                        <p><strong>Enregistrement #${index + 1}</strong></p>
+                        <p>Nom: ${data.nom}</p>
+                        <p>Email: ${data.email}</p>
+                        <p>Âge: ${data.age}</p>
+                        <p>Date d'abonnement: ${data.abonnement}</p>
+                        <p>Statut: ${data.statut}</p>
+                        <p>Date d'enregistrement: ${data.dateEnregistrement}</p>
+                    </div>
+                `;
+        });
+
+        dataDisplay.innerHTML = html;
+      }
+
+      function effacerLocalStorage() {
+        if (
+          confirm("Êtes-vous sûr de vouloir supprimer toutes les données ?")
+        ) {
+          localStorage.removeItem("formData");
+          document.getElementById("dataDisplay").innerHTML = "";
+          alert("Toutes les données ont été supprimées !");
+        }
+      }
+    </script>
+  </body>
+</html>
