@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famille - SAWADOGO</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: #4a6fa5;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .family-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .family-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .member-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            width: 280px;
+            text-align: center;
+        }
+        
+        .member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #4a6fa5;
+        }
+        
+        .family-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .family-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .family-gallery img:hover {
+            transform: scale(1.03);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .family-story {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>La Famille [Nom de famille]</h1>
+            <p>Depuis [année de création de la famille]</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="family-intro">
+            <h2>Bienvenue sur notre page familiale</h2>
+            <p>Nous sommes une famille heureuse de [nombre] membres, vivant à [ville/région]. Cette page est dédiée à partager nos moments précieux et notre histoire.</p>
+        </section>
+        
+        <section class="family-story">
+            <h2>Notre Histoire</h2>
+            <p>Racontez ici l'histoire de votre famille. Quand et comment vous vous êtes rencontrés, les événements marquants, les déménagements, les naissances, etc.</p>
+            <p>Vous pouvez ajouter des anecdotes, des traditions familiales ou tout ce qui rend votre famille unique.</p>
+        </section>
+        
+        <section>
+            <h2 style="text-align: center;">Les Membres de la Famille</h2>
+            <div class="family-members">
+                <!-- Membre 1 -->
+                <div class="member-card">
+                    <img src="chemin/vers/photo1.jpg" alt="[Prénom]">
+                    <h3>[Prénom] [Nom]</h3>
+                    <p>Rôle dans la famille (père, mère, enfant, etc.)</p>
+                    <p>Date de naissance: [JJ/MM/AAAA]</p>
+                    <p>Centres d'intérêt: [liste]</p>
+                </div>
+                
+                <!-- Membre 2 -->
+                <div class="member-card">
+                    <img src="chemin/vers/photo2.jpg" alt="[Prénom]">
+                    <h3>[Prénom] [Nom]</h3>
+                    <p>Rôle dans la famille</p>
+                    <p>Date de naissance: [JJ/MM/AAAA]</p>
+                    <p>Centres d'intérêt: [liste]</p>
+                </div>
+                
+                <!-- Ajoutez autant de membres que nécessaire -->
+            </div>
+        </section>
+        
+        <section>
+            <h2 style="text-align: center;">Galerie Familiale</h2>
+            <div class="family-gallery">
+                <img src="chemin/vers/photo-vacances1.jpg" alt="Vacances en famille">
+                <img src="chemin/vers/photo-fete.jpg" alt="Fête d'anniversaire">
+                <img src="chemin/vers/photo-reunion.jpg" alt="Réunion familiale">
+                <img src="chemin/vers/photo-mariage.jpg" alt="Mariage">
+                <img src="chemin/vers/photo-naissances.jpg" alt="Naissances">
+                <img src="chemin/vers/photo-traditions.jpg" alt="Traditions familiales">
+                <!-- Ajoutez autant d'images que vous voulez -->
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Famille [Nom de famille]. Tous droits réservés.</p>
+            <p>Contact: <a href="mailto:contact@famille-nom.com" style="color: #4a6fa5;">contact@famille-nom.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
